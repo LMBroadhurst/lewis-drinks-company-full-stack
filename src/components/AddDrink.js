@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useReducer } from 'react';
 import axios from 'axios';
 import "./AddDrink.css";
 
@@ -8,11 +8,12 @@ const AddDrink = () => {
     const [parent_company, set_parent_company] = useState('');
     const [in_stock, set_in_stock] = useState(false);
 
+
     const handleNameChange = event => set_name_of_drink(event.target.value);
     const handleParentCompany = event => set_parent_company(event.target.value);
     const handleInStock = event => set_in_stock(event.target.value);
 
-    const handleSubmit = event => {
+    const handleSubmit = async event => {
         event.preventDefault()
 
         const drink = {
@@ -24,6 +25,9 @@ const AddDrink = () => {
             .then( res => {
                 console.log(res);
             }).catch( (err) => console.log(err) );
+
+        const newDrink = await drink.json();
+
     }
 
 
