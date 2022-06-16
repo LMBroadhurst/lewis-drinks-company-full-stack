@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
+import "./EditDrink.css";
 
-const EditDrink = () => {
+const EditDrink = (drinks, setDrinks) => {
 
     const [name_of_drink, set_name_of_drink] = useState('');
     const [parent_company, set_parent_company] = useState('');
@@ -27,12 +28,11 @@ const EditDrink = () => {
                 console.log(res);
             }).catch( (err) => console.log(err) );
 
-        
     }
 
   return (
     <>
-        <section>
+        <section className="editDrinks">
             <h1>Edit Drink Details</h1>
 
             <form onSubmit={handlePut}>
