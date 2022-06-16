@@ -1,20 +1,20 @@
-import { useState } from 'react';
-import axios from 'axios';
-import "./AddDrink.css";
+import axios from "axios";
+import { useState } from "react";
 
-const AddDrink = ( {drinks, setDrinks} ) => {
+const EditDrink = () => {
 
     const [name_of_drink, set_name_of_drink] = useState('');
     const [parent_company, set_parent_company] = useState('');
     const [in_stock, set_in_stock] = useState(false);
+    const [drinkId, setDrinkId] = useState(-1);
 
-
+    const handleIdChange = event => setDrinkId(event.target.value);
     const handleNameChange = event => set_name_of_drink(event.target.value);
     const handleParentCompany = event => set_parent_company(event.target.value);
     const handleInStock = event => set_in_stock(event.target.value);
 
-    const handleSubmit = event => {
-        event.preventDefault()
+    const handlePut = event => {
+        event.preventDefault();
 
         const drink = {
             "name_of_drink": name_of_drink,
@@ -22,29 +22,28 @@ const AddDrink = ( {drinks, setDrinks} ) => {
             "in_stock": in_stock
         }
 
-        axios.post('http://127.0.0.1:8080/drinks', drink)
+        axios.put(`http://127.0.0.1:8080/drinks/put/${drinkId}`, drink)
             .then( res => {
                 console.log(res);
             }).catch( (err) => console.log(err) );
 
-        const newDrink = drink.json();
-
-        setDrinks(listedDrinks => [...listedDrinks, newDrink]);
-
-        set_in_stock('');
-        set_name_of_drink('');
-        set_parent_company('')
-
+        
     }
-
-
 
   return (
     <>
         <section>
-            <h1>Order Request Form</h1>
+            <h1>Edit Drink Details</h1>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handlePut}>
+
+                <label>
+                    Drink ID
+                    <input type="text" 
+                           name="name_of_drink"
+                           onChange={handleIdChange}
+                    />
+                </label>
 
                 <label>
                     Name of drink
@@ -64,9 +63,8 @@ const AddDrink = ( {drinks, setDrinks} ) => {
 
             </form>
         </section>
-        
     </>
   )
 }
 
-export default AddDrink
+export default EditDrink
