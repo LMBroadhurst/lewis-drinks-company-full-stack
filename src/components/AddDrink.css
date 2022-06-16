@@ -1,0 +1,19 @@
+form {
+    margin: 0 25rem;
+    margin-top: 5rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #ffdab9;
+
+}
+
+form > label {
+    padding: 0 1rem;
+}

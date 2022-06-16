@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
+import "./DrinkList.css";
 
 const DrinkList = () => {
 
@@ -15,10 +16,10 @@ const DrinkList = () => {
 
   return (
     <>
-        <ul>
+        <ul className="drink-list">
             {
                 drinks.map( drink => 
-                    <li key={drink.id}>{`${drink.name_of_drink}  |  Supplied by ${drink.parent_company}  |  In stock? ${drink.in_stock}`}</li>)
+                    <li className="drink-list-li" key={drink.id}>{`${drink.name_of_drink}  |  Supplied by ${drink.parent_company}  |  In stock? ${drink.in_stock}`}</li>)
             }
         </ul>
     </>

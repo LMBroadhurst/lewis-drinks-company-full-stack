@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import "./AddDrink.css";
 
 const AddDrink = () => {
 
@@ -45,7 +46,7 @@ const AddDrink = () => {
                 In stock?
                 <input type="text" name="in_stock" onChange={handleInStock} />
             </label>
-            <button type="submit">Confirm</button>
+            <button type="submit">Submit</button>
 
         </form>
     </>
